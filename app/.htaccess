@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+    Options +FollowSymlinks
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]
+    ErrorDocument 500 http://web.dianjoy.com/admin/500.html
+    ErrorDocument 404 http://web.dianjoy.com/admin/404.html
+    ErrorDocument 403 http://web.dianjoy.com/admin/403.html
+</IfModule>
