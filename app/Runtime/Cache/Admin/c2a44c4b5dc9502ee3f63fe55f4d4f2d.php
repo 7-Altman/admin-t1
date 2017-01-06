@@ -6,12 +6,15 @@
 <script src="<?php echo (C("JS")); ?>util.js"></script>
 <script src="<?php echo (C("JS")); ?>jquery.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="<?php echo (C("VUE")); ?>index.css">
 <link rel="stylesheet" type="text/css" href="<?php echo (C("CSS")); ?>base.css">
+<link rel="stylesheet" type="text/css" href="<?php echo (C("CSS")); ?>index.css">
 <link rel="stylesheet" type="text/css" href="<?php echo (C("CSS")); ?>normalize.css">
-<script src="<?php echo (C("VUE")); ?>vue.js"></script>
+<!--<script src="<?php echo (C("VUE")); ?>vue.js"></script>-->
+<!--<script src="<?php echo (C("VUE")); ?>index.js"></script>-->
+<script src="//unpkg.com/vue/dist/vue.js"></script>
+<script src="//unpkg.com/element-ui/lib/index.js"></script>
 <script src="<?php echo (C("VUE")); ?>vue-resource.min.js"></script>
-<script src="<?php echo (C("VUE")); ?>index.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo (C("VUE")); ?>index.css">
 
 <div id="app">
     <template>
@@ -23,7 +26,14 @@
 
         <el-table :data="tableData" border style="width: 100%" height="920" @cell-click="handleCellClick">
 
-
+            <el-table-column type="expand">
+                <template scope="props">
+                    <p>省: {{ props.row.province }}</p>
+                    <p>市: {{ props.row.city }}</p>
+                    <p>住址: {{ props.row.detailAddress }}</p>
+                    <p>邮编: {{ props.row.zip }}</p>
+                </template>
+            </el-table-column>
 
             <el-table-column prop="name" :label=tableHead.name width="120">
             </el-table-column>
