@@ -116,15 +116,14 @@
     },
 
     beforeMount: function(){
-        this.$http.get("userInfo").then((response) => {
+        this.$http.get("getData").then((response) => {
             if (response.status !== 200) {
             this.$message({
                 type: 'info',
                 message: '请求失败, 请重试'
             });
         }
-        this.tableData1 = response.data
-//            this.tableData1 = JSON.parse(response.data)
+        this.tableData1 = JSON.parse(response.data)
         this.tableData = this.tableData1.slice(0, this.pageSize )
         this.totalNum = this.tableData1.length
     }, (response) => {

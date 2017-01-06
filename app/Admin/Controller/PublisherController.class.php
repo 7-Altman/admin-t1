@@ -16,10 +16,19 @@ class PublisherController extends BaseController
         $this->display();
     }
 
-    public function create(){
-        if(IS_POST){
+    public function getData()
+    {
+        if (!IS_POST) {
+            $pubModel = \M('tPublisher');
+            echo json_encode($pubModel->select(), true);
+        }
+    }
 
-        }else{
+    public function create()
+    {
+        if (IS_POST) {
+
+        } else {
             $this->display();
         }
     }
